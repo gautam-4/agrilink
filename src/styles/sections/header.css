@@ -1,0 +1,103 @@
+#logo img{
+    width: 180px;
+}
+
+.header__nav {
+    display: flex;
+    overflow: hidden;
+}
+
+.header__logo {
+    flex: 1;
+    display: flex;
+    position: relative;
+    padding: 20px;
+}
+
+.header__logo-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    background-color: var(--secondary-color);
+    z-index: -1;
+}
+#logo{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.header__logo div {
+    padding-left: 30px;
+    font-weight: 700;
+    font-size: 2em;
+    text-transform: uppercase;
+    font-family: var(--font-two);
+    color: #fff;
+    opacity: 0.8;
+}
+
+.header__menu {
+    padding: 20px;
+    flex: 1.236;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 64px;
+    list-style: none;
+}
+
+.header__menu li {
+    font-family: var(--font-two);
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.navigation a{
+    position: relative;
+    font-size: 1.05em;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 40px; 
+}
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: var(--secondary-color);
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.navigation .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid var(--secondary-color);
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: var(--secondary-color);
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.navigation .btnLogin-popup:hover{
+    background: var(--secondary-color);
+    color: white;
+}
