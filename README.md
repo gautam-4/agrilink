@@ -1,4 +1,6 @@
 # agrilink
-- concept landing page using react
+- concept landing page for decentralised farmer insurance
+- original design
+- using react
 - non-responsive
 ![](Screenshot.png)
