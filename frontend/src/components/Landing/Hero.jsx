@@ -1,4 +1,4 @@
-import overlayImg from '../assets/overlay.png'
+import overlayImg from '@/assets/overlay.png'
 
 function Hero() {
     return (

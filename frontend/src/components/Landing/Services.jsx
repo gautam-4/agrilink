@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import marketImg from '../assets/marketplace2.png'
-import aiFarmImg from '../assets/aifarm.png'
-import insuranceImg from '../assets/insurance.png'
+import marketImg from '@/assets/marketplace2.png'
+import aiFarmImg from '@/assets/aifarm.png'
+import insuranceImg from '@/assets/insurance.png'
 
 function Services() {
   const [highlightedCard, setHighlightedCard] = useState(0);

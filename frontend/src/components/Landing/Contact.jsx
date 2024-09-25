@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import pfp from '../assets/pfp.png'
+import pfp from '@/assets/pfp.png'
 
 function Contact() {
     useEffect(() => {
