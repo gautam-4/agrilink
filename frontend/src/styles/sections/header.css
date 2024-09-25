@@ -8,7 +8,7 @@
 }
 
 .header__logo {
-    flex: 1;
+    flex: 0.59;
     display: flex;
     position: relative;
     padding: 20px;

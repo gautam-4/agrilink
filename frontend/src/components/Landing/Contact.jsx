@@ -13,7 +13,7 @@ function Contact() {
     return (
         <>
             <section className="contact" id="contact">
-                <div className="contact_heading" data-aos="flip-up">Contact</div>
+                <div className="contact_heading" data-aos="flip-up">Our Team</div>
                 <div className="contact_container" data-aos="fade-up">
                     <div className="contact_container-names">
                         <div className="team-name">Error Overflow</div>
