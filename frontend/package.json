@@ -12,7 +12,15 @@
   "dependencies": {
     "aos": "^2.3.4",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "@stripe/stripe-js": "^3.0.3",
+    "axios": "^1.6.7",
+    "react-router-dom": "^6.22.0",
+    "react-dropzone": "^14.2.3",
+    "react-toastify": "^10.0.4",
+    "ethers": "^5.7.2",
+    "@google/generative-ai": "^0.2.1",
+    "sanitize-html": "^2.12.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

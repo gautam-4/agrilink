@@ -1,10 +1,10 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Services from "@/components/Services"
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import Header from "@/components/Landing/Header";
+import Hero from "@/components/Landing/Hero";
+import Services from "@/components/Landing/Services"
+import Contact from "@/components/Landing/Contact";
+import Footer from "@/components/Landing/Footer";
 
-function App() {
+function Landing() {
   return (
     <>
       <Header/>
@@ -16,4 +16,4 @@ function App() {
   )
 }
 
-export default App
+export default Landing
