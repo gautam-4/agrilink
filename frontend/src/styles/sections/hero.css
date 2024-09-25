@@ -12,12 +12,13 @@
     position: relative;
 }
 .hero_overlay img{
-    height: 720px;
+    height: 750px;
     position: absolute;
     transform: rotate(-10deg);
-    left: -50px;
+    left: 60px;
     top: 30px;
-    opacity: 0.9;
+    opacity: 0.8;
+    z-index: 10;
 }
 .hero_main{
     flex: 2; /*1.415  2*/
