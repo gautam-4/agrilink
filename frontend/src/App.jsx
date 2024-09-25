@@ -1,9 +1,12 @@
 import Landing from '@/pages/Landing'
+import { InsuranceProvider } from '@/Context/InsuranceContext';
 
 function App() {
-  return(
+  return (
     <>
-      <Landing/>
+      <InsuranceProvider>
+        <Landing />
+      </InsuranceProvider>
     </>
   )
 }
