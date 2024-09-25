@@ -1,9 +1,12 @@
 async function main() {
-  const FundMe = await ethers.getContractFactory('FundMe');
-  console.log('Deploying contract...');
-  const fundMe = await FundMe.deploy();
-  await fundMe.deployed();
-  console.log('Contract deployed to:', fundMe.address);
+  const Insurance = await ethers.getContractFactory('Insurance');
+
+  console.log('Deploying Insurance contract...');
+
+  const insurance = await Insurance.deploy();
+  await insurance.deployed();
+
+  console.log('Insurance contract deployed to:', insurance.address);
 }
 
 main()
