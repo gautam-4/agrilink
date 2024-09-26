@@ -5,6 +5,10 @@ import { Menu, X } from 'lucide-react';
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleGetStarted = () => {
+    window.location.href = 'http://localhost:3000';
+  };
+
   return (
     <header className="relative z-10">
       <nav className="header__nav navigation flex items-center justify-between">
@@ -19,7 +23,7 @@ function Header() {
           <li><a href="">Home</a></li>
           <li><a href="#services">About</a></li>
           <li><a href="#contact">Our Team</a></li>
-          <li><button className="btnLogin-popup">Get Started</button></li>
+          <li><button className="btnLogin-popup" onClick={handleGetStarted}>Get Started</button></li>
         </ul>
         
         <div className="lg:hidden pr-4">
@@ -35,7 +39,7 @@ function Header() {
             <li><a href="">Home</a></li>
             <li><a href="#services">About</a></li>
             <li><a href="#contact">Our Team</a></li>
-            <li><button className="btnLogin-popup">Login</button></li>
+            <li><button className="btnLogin-popup" onClick={handleGetStarted}>Get Started</button></li>
           </ul>
         </div>
       )}
