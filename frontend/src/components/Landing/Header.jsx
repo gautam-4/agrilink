@@ -19,7 +19,7 @@ function Header() {
           <li><a href="">Home</a></li>
           <li><a href="#services">About</a></li>
           <li><a href="#contact">Our Team</a></li>
-          <li><button className="btnLogin-popup">Login</button></li>
+          <li><button className="btnLogin-popup">Get Started</button></li>
         </ul>
         
         <div className="lg:hidden pr-4">
