@@ -10,7 +10,8 @@ import MyOrders from './pages/MyOrders/MyOrders'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Verify from './pages/Verify/Verify'
-import Scan from './pages/Scan/Scan'
+// import Scan from './pages/Scan/Scan'
+import Yield from '@/pages/Yield/Yield'
 import Insurance from './pages/Insurance/Insurance'
 import { StoreContext } from './Context/StoreContext'
 import AgriBot from './pages/AgriBot/AgriBot'
@@ -92,10 +93,10 @@ const App = () => {
             }
           />
           <Route
-            path="/scan"
+            path="/yield"
             element={
               <ProtectedRoute>
-                <Scan />
+                <Yield />
               </ProtectedRoute>
             }
           />

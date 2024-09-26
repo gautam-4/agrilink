@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
+import { ToastContainer, toast } from "react-toastify";
 import { Context } from "../../Context/GeminiContext";
 import sanitizeHtml from 'sanitize-html';
-import Sidebar from "../Sidebar/Sidebar";
 
 const Main = () => {
   const {
@@ -16,13 +16,17 @@ const Main = () => {
     input,
   } = useContext(Context);
 
+  const [processing,setProcessing]=useState(false);
+  const [hiddenPrompt, setHiddenPrompt] = useState("");
+  const [imagePreview, setImagePreview] = useState(null); 
   const handleCardClick = (prompt) => {
-    setInput(prompt);
+    setInput((prev) => prev ? `${prev} ${prompt}` : prompt);
   };
+  
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      onSent();
+      handleSend();
     }
   };
 
@@ -35,16 +39,64 @@ const Main = () => {
     // Optionally, you can provide user feedback that the data has been copied
     // For example, you can display a tooltip or a message indicating that the data has been copied.
   };
+  const handleImageUpload = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setImagePreview(imageUrl);
+  
+      toast.info("Your image is being processed...");
+  
+      setProcessing(true);
+      const formData = new FormData();
+      formData.append("file", file);
+  
+      try {
+        const response = await fetch("http://127.0.0.1:8000/predict_disease", {
+          method: "POST",
+          body: formData,
+        });
+        const data = await response.json();
+        const diseasePrediction = data.prediction;
+  
+        const hiddenPromptMessage = `How do I solve the identified disease: ${diseasePrediction}?`;
+        setHiddenPrompt(hiddenPromptMessage);
+  
+      } catch (error) {
+        toast.error("Error while processing the image.");
+        console.error("Error:", error);
+      } finally {
+        setProcessing(false);  // Re-enable actions
+      }
+    }
+  };
+  
+  const handleSend = () => {
+    if (!processing) {
+      const combinedPrompt = `${input}. ${hiddenPrompt}`;
+
+      onSent(combinedPrompt);  // Pass combined data to the backend
+
+      setInput("");
+      setHiddenPrompt("");
+      setImagePreview(null)
+    }
+  };
+  
+  
   return (
     <div className="main">
-
+      <ToastContainer />
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageUpload}
+        style={{ display: "none" }}
+        id="upload-input"
+      />
       <div className="agribot-main">
-        <Sidebar />
         <div className="main-container">
-          <div className="nav">
-            <p>AgriBot</p>
-            <img src={assets.user_icon} alt="" />
-          </div>
+         
           {showResult ? (
             <div className="result">
               <div className="result-title">
@@ -62,7 +114,6 @@ const Main = () => {
                 ) : (
                   <>
                     <pre style={{ whiteSpace: "pre-wrap" }}>
-                      {recentPrompt}
                       {"\n\n"}
                       {sanitizeHtml(resultData, {
                         allowedTags: [],
@@ -91,73 +142,46 @@ const Main = () => {
               <div className="cards">
                 <div
                   className="card"
-                  onClick={() =>
-                    handleCardClick(
-                      "Based on current market trends and projected yields, suggest optimal pricing strategies for our vegetables at the farmers' market"
-                    )
-                  }
+                  onClick={() => document.getElementById("upload-input").click()}
                 >
                   <p>
-                    Based on current market trends and projected yields, suggest
-                    optimal pricing strategies for our vegetables at the farmers'
-                    market
+                    Upload the picture of your crop to get output.
                   </p>
-                  <img src={assets.compass_icon} alt="" />
+                  <img src={assets.uploadIcon} alt="" />
                 </div>
-                <div
-                  className="card"
-                  onClick={() =>
-                    handleCardClick("कृषि उपज की सही खेती के लिए सलाह दें।")
-                  }
-                >
-                  <p>कृषि उपज की सही खेती के लिए सलाह दें।</p>
-                  <img src={assets.bulb_icon} alt="" />
-                </div>
-                <div
-                  className="card"
-                  onClick={() =>
-                    handleCardClick(
-                      "Compare different irrigation methods for my farm - pros and cons of drip vs. sprinkler systems?"
-                    )
-                  }
-                >
-                  <p>
-                    Compare different irrigation methods for my farm - pros and
-                    cons of drip vs. sprinkler systems?
-                  </p>
-                  <img src={assets.message_icon} alt="" />
-                </div>
-                <div
-                  className="card"
-                  onClick={() =>
-                    handleCardClick("मेरे खेत की मिट्टी की गुणवत्ता कैसे बढ़ाएँ?")
-                  }
-                >
-                  <p>मेरे खेत की मिट्टी की गुणवत्ता कैसे बढ़ाएँ?</p>
-                  <img src={assets.code_icon} alt="" />
-                </div>
+                
               </div>
             </>
           )}
-          <div className="main-bottom">
+          <div className="main-bottom" style={imagePreview?{bottom:"-30px"}:{}}>
+          
             <div className="search-box">
-              <input
+            <div className="input-container">
+            {imagePreview && (
+              <div className="image-preview">
+                <img src={imagePreview} alt="Preview" style={{ maxWidth: "100%", height: "auto",minHeight:"30px",minWidth:"40px",borderRadius:"10px" }} />
+              </div>
+            )}
+            <input
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress} // Add event listener for key press
                 value={input}
                 type="text"
                 placeholder="Enter a prompt here"
-                style={{ border: "1px solid black", borderRadius: "10px" }}
+                style={{ border: "1px solid black", borderRadius: "10px" ,width:"100%"}}
               />
-              <div>
-                <img src={assets.gallery_icon} width={30} alt="" />
+            </div>
+              
+              <div className="icons">
+              <img src={assets.gallery_icon} width={30} alt="" onClick={() => document.getElementById("upload-input").click()}/>
                 <img src={assets.mic_icon} width={30} alt="" />
                 {input ? (
                   <img
-                    onClick={() => onSent()}
+                    onClick={() => handleSend()}  // Call the send handler
                     src={assets.send_icon}
                     width={30}
-                    alt=""
+                    alt="Send"
+                    style={{ opacity: processing ? 0.5 : 1 }} // Reduce opacity when disabled
                   />
                 ) : null}
               </div>
