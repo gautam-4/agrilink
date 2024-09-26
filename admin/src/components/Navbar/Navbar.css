@@ -1,0 +1,27 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    background-color: #F1E4C3;
+    border: none;
+}
+
+.sidebar-align {
+    width: 18%;
+    height: 100%;
+    background-color: #4E5E47;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.navbar .logo {
+    width: max(15%, 130px);
+}
+
+.navbar .profile {
+    width: 40px;
+    margin-right: 4%;
+}
