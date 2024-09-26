@@ -9,6 +9,7 @@ import menu_5 from './menu_5.png'
 import menu_6 from './menu_6.png'
 import menu_7 from './menu_7.png'
 import menu_8 from './menu_8.png'
+import yieldimg from './yieldimg.jpg'
 
 import add_icon_white from './add_icon_white.png'
 import add_icon_green from './add_icon_green.png'
@@ -85,7 +86,8 @@ export const assets = {
     profile_icon,
     logout_icon,
     bag_icon,
-    parcel_icon
+    parcel_icon,
+    yieldimg
 }
 
 export const menu_list = [
