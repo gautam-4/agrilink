@@ -9,7 +9,7 @@ const Order = () => {
   const [orders, setOrders] = useState([]);
 
   const fetchAllOrders = async () => {
-    const response = await axios.get(`${url}/api/order/list`)
+    const response = await axios.get(`₹{url}/api/order/list`)
     if (response.data.success) {
       setOrders(response.data.data.reverse());
       console.log(response.data.data);
@@ -21,7 +21,7 @@ const Order = () => {
 
   const statusHandler = async (event,orderId) => {
     console.log(event,orderId);
-    const response = await axios.post(`${url}/api/order/status`,{
+    const response = await axios.post(`₹{url}/api/order/status`,{
       orderId,
       status:event.target.value
     })
@@ -62,7 +62,7 @@ const Order = () => {
               <p className='order-item-phone'>{order.address.phone}</p>
             </div>
             <p>Items : {order.items.length}</p>
-            <p>${order.amount}</p>
+            <p>₹{order.amount}</p>
             <select onChange={(e)=>statusHandler(e,order._id)} value={order.status} name="" id="">
               <option value="Food Processing">Food Processing</option>
               <option value="Out for delivery">Out for delivery</option>
