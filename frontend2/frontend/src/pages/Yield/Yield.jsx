@@ -11,7 +11,7 @@ function Yield() {
           <img
             src={assets.yieldimg}
             alt="Crop Yield"
-            className="rounded-lg shadow-md w-[80%]"
+            className="rounded-lg shadow-md w-[60%]"
           />
         </div>
         <YieldPredictor />
