@@ -22,7 +22,7 @@ const Navbar = ({ setShowLogin }) => {
       <ul className="navbar-menu">
         <Link to="/" onClick={() => setMenu("home")} className={`${menu === "home" ? "active" : ""}`}>Home</Link>
         <Link to="/insurance" onClick={() => setMenu("insurance")} className={`${menu === "insurance" ? "active" : ""}`}>Insurance</Link>
-        <Link to="/yield" onClick={() => setMenu("scan")} className={`${menu === "Yield Predictor" ? "active" : ""}`}>Yield Predictor</Link>
+        <Link to="/yield" onClick={() => setMenu("Yield Predictor")} className={`${menu === "Yield Predictor" ? "active" : ""}`}>Yield Predictor</Link>
         <Link to="/agribot" onClick={() => setMenu("agribot")} className={`${menu === "agribot" ? "active" : ""}`}>Agribot</Link>
         <a href='#footer' onClick={() => setMenu("contact")} className={`${menu === "contact" ? "active" : ""}`}>Contact Us</a>
       </ul>
