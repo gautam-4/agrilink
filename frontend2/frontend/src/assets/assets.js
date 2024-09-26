@@ -46,7 +46,6 @@ import code_icon from './code_icon.png'
 import send_icon from './send_icon.png'
 import gemini_icon from './gemini_logo.png'
 import copy from './copy.png'
-
 export const assets = {
     history_icon,
     menu_icon,
